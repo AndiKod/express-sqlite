@@ -16,10 +16,8 @@ let item = await animals.get("leo")
 
 app.all('/', (req, res) => {
 
-    
-
     console.log("Just got a request!")
-    res.send('Yo ' + item.color + ' ' + item.type)
+    res.send('Yo ')
 })
 
 app.listen(process.env.PORT || 3000)
