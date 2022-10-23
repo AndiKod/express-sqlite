@@ -24,10 +24,13 @@ app.all('/', (req, res) => {
         let item = await animals.get('leo')
         console.log(item)
     }
-    run()
 
     console.log("Just got a request!")
-    res.send('Yo!')
+    res.send('Yo!' + item)
+
+    run()
+
+    
 })
 
 app.listen(process.env.PORT || 3000)
