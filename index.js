@@ -10,11 +10,15 @@ const app = express()
 
 app.all('/', (req, res) => {
 
-        let foo = "bar"
+    const run = async function(){
 
+    let foo = "bar"
+    console.log("vraiment? aucun log?")
+    res.send('Bof!' + foo)
+}
+run()
 
-        console.log("vraiment? aucun log?")
-        res.send('Bof ! ! !' + foo)
+        
 
 
 
