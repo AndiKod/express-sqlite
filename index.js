@@ -1,28 +1,19 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const path = require('path');
+// Data sets for the endpoints
+const colors = require('./data/Colors');
 
+const app = express();
 
-app.all('/', (req, res) => {
-    res.send('Go to the /color route to get one of them')   
-})
+// Set static folder
+app.use(express.static(path.join(__dirname, 'public')));
 
+// API routes
 app.get('/color', (req, res) => {
-
-    //colors
-    let colors = [
-        'blue',
-        'purple',
-        'green',
-        'orange',
-        'yellow',
-        'red',
-        'navi'
-    ]
-
     let randomColor = colors[Math.floor(Math.random() * colors.length)]
-
-    res.send(randomColor);
-
+    res.json(randomColor);
 })
 
-app.listen(process.env.PORT || 3000)
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log('Server started'));
