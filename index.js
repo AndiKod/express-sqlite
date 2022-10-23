@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const CyclicDb = require("cyclic-dynamodb")
 const db = CyclicDb("brainy-shawl-elkCyclicDB")
+const animals = db.collection("animals")
 
 
 
