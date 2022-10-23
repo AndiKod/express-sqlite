@@ -3,7 +3,7 @@ const app = express()
 
 
 app.all('/', (req, res) => {
-    res.send('De la merde')   
+    res.send('Go to the /color route to get one of them')   
 })
 
 app.get('/color', (req, res) => {
