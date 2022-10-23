@@ -10,11 +10,11 @@ const app = express()
 
 app.all('/', (req, res) => {
 
-
+        let foo = "bar"
 
 
         console.log("vraiment? aucun log?")
-        res.send('Bof ! ! !')
+        res.send('Bof ! ! !' + foo)
 
 
 
