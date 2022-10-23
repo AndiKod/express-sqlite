@@ -4,6 +4,12 @@ const CyclicDb = require("cyclic-dynamodb")
 const db = CyclicDb("brainy-shawl-elkCyclicDB")
 const animals = db.collection("animals")
 
+// create an item in collection with key "leo"
+let leo = await animals.set("leo", {
+    type: "cat",
+    color: "orange"
+})
+
 
 
 
