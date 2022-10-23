@@ -1,7 +1,7 @@
 {
-  "name": "starter-express-api",
+  "name": "api-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "Testing cyclic.sh hosting",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,13 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/cyclic-software/starter-express-api.git"
   },
-  "author": "",
+  "author": "Andrei Curelaru - AndiKod",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cyclic-software/starter-express-api/issues"
   },
   "homepage": "https://github.com/cyclic-software/starter-express-api#readme",
   "dependencies": {
+    "cyclic-dynamodb": "^0.0.27",
     "express": "^4.17.1"
   }
 }
