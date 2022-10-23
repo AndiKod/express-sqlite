@@ -27,7 +27,7 @@ app.all('/', (req, res) => {
 
     let foo = " BAR "
     console.log("vraiment? aucun log?")
-    res.send('Bof!' + foo)
+    res.send('De la merde' + foo)
 }
 run()
 
