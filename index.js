@@ -24,7 +24,7 @@ app.all('/', (req, res) => {
         let item = await animals.get('leo')
 
         console.log("Just got a request!")
-        res.send('Yo!' + item)
+        res.send('Yo:' + item.type)
 
     }
 
