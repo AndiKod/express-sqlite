@@ -22,11 +22,13 @@ app.all('/', (req, res) => {
 
         // get an item at key "leo" from collection animals
         let item = await animals.get('leo')
-        console.log(item)
+
+        console.log("Just got a request!")
+        res.send('Yo!' + item)
+
     }
 
-    console.log("Just got a request!")
-    res.send('Yo!' + item)
+    
 
     run()
 
