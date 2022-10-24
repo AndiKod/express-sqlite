@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const body_parser = require('body-parser');
-const sqlite3 = require('sqlite3');
+const sqlite = require('sqlite3');
 var cors = require('cors');
 const exphbs = require('express-handlebars');
 const logger = require('./middlewares/logger');
@@ -16,7 +16,7 @@ var corsOptions = {
 
 
 const dbname = 'data.db';
-let db = new sqlite3.Database(dbname, err => {
+let db = new sqlite.Database(dbname, sqlite.OPEN_READWRITE, err => {
     if (err) {
         console.error('Error opening database ' + err.message);
     } else {
