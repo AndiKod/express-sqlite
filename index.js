@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const body_parser = require('body-parser');
 const sqlite3 = require('sqlite3');
+var cors = require('cors');
 const exphbs = require('express-handlebars');
 const logger = require('./middlewares/logger');
 
@@ -38,6 +39,7 @@ let db = new sqlite3.Database(dbname, err => {
 
 
 const app = express();
+app.use(cors())
 
 
 
