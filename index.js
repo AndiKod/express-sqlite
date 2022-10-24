@@ -2,8 +2,6 @@ const express = require('express');
 const path = require('path');
 const body_parser = require('body-parser');
 const sqlite3 = require('sqlite3');
-const axios = require('axios');
-const fetch = require('cross-fetch');
 const exphbs = require('express-handlebars');
 const logger = require('./middlewares/logger');
 
@@ -41,31 +39,7 @@ let db = new sqlite3.Database(dbname, err => {
 
 const app = express();
 
-// api url
-const api_url = 
-      "http:/localhost:5000/users";
-  
-let zip = [];
-      
-// Defining async function
-async function getapi(url) {
-    
-    // Storing response
-    const response = await fetch(url);
-    
-    // Storing data in form of JSON
-    var data = await response.json();
-    zip = data.rows;
 
-    return zip;
-    
-
-
-}
-// Calling that async function
-;
-
-console.log('gg: ' + getapi(api_url))
 
 // Console log each route used
 //app.use(logger);
