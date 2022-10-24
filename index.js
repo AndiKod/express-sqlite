@@ -11,7 +11,6 @@ const users = require('./data/Users');
 const { runInNewContext } = require('vm');
 
 var corsOptions = {
-  origin: 'https://exp-sqlite.cyclic.app',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
