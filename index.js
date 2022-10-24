@@ -63,7 +63,7 @@ app.post("/users", body_parser.urlencoded({ extended: false }), (req, res, next)
         params : req.body
     })
  
-    console.log(req.body)
+    //console.log(req.body)
 
     const sql = "INSERT INTO users (lastname, firstname) VALUES (?,?)";
     const user = [req.body.lastname, req.body.firstname];
