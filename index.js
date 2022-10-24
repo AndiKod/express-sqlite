@@ -124,7 +124,7 @@ app.patch("/users/", cors(corsOptions), (req, res, next) => {
 });
 
 // DELETE record
-app.delete("/users/:id?mode=rwc", cors(corsOptions), (req, res, next) => {
+app.delete("/users/:id", cors(corsOptions), (req, res, next) => {
     db.run(`DELETE FROM users WHERE user_id = ?`,
         req.params.id,
         function (err, result) {
