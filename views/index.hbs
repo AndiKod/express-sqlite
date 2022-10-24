@@ -1,9 +1,22 @@
 <h1 class="text-center mb-3">{{title}}</h1>
 <em>Just an API with dummy data, while prototyping projects.</em>
 
-<h2>Color</h2>
-The route <a href="/color">/color</a> will return a random color name
+<form action="http://localhost:5000/users" method="POST">
 
-<h2>Users</h2>
-<p>Fetch <a href="/api/users">/api/users</a> for a list of users with "name" and "email".</p>
-<p>Add a number as parameter, like <a href="/api/users/2">/api/users/2</a> to retrive a single user</p>
+  <div class="form-group row">
+    <label for="lastname">Lastname</label>
+    <input type="text" name="lastname">
+  </div>
+
+  <div class="form-group row">
+    <label for="lastname">Firstname</label>
+    <input type="text" name="firstname">
+  </div>
+
+  <input type="submit" value="CREATE user">
+
+</form>
+
+<hr>
+
+<a href="/users">See Users</a>
