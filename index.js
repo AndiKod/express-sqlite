@@ -10,6 +10,11 @@ const logger = require('./middlewares/logger');
 const users = require('./data/Users');
 const { runInNewContext } = require('vm');
 
+var corsOptions = {
+  origin: 'https://exp-sqlite.cyclic.app',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
 
 const dbname = 'data.db';
 let db = new sqlite3.Database(dbname, err => {
@@ -39,7 +44,7 @@ let db = new sqlite3.Database(dbname, err => {
 
 
 const app = express();
-app.use(cors())
+
 
 
 
@@ -57,15 +62,9 @@ app.get('/', (req, res) => res.render('index', {
 }));
 */
 
-app.all('/', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
- });
 
 
-
-app.post("/users", body_parser.urlencoded({ extended: false }), (req, res, next) => {
+app.post("/users", body_parser.urlencoded({ extended: false }), cors(corsOptions), (req, res, next) => {
 
     res.json({
         params : req.body
@@ -111,7 +110,7 @@ app.get("/users", (req, res, next) => {
 });
 
 // UPDATE record
-app.patch("/users/", (req, res, next) => {
+app.patch("/users/", cors(corsOptions), (req, res, next) => {
     var reqBody = req.body;
     db.run(`UPDATE users set lastname = ?, firstname = ?, title = ?, address = ?, country_code = ? WHERE user_id = ?`,
         [reqBody.lastname, reqBody.firstname, reqBody.title, reqBody.address, reqBody.country_code, reqBody.user_id],
@@ -125,7 +124,7 @@ app.patch("/users/", (req, res, next) => {
 });
 
 // DELETE record
-app.delete("/users/:id", (req, res, next) => {
+app.delete("/users/:id", cors(corsOptions), (req, res, next) => {
     db.run(`DELETE FROM users WHERE user_id = ?`,
         req.params.id,
         function (err, result) {
