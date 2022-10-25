@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
-const body_parser = require('body-parser');
-const sqlite = require('sqlite3');
+const bodyParser = require('body-parser');
+const sqlite = require('sqlite3').verbose();
 var cors = require('cors');
 const exphbs = require('express-handlebars');
 const logger = require('./middlewares/logger');
@@ -16,7 +16,7 @@ var corsOptions = {
 
 
 const dbname = 'data.db';
-let db = new sqlite.Database(dbname, sqlite.OPEN_READWRITE, err => {
+let db = new sqlite.Database(dbname, sqlite.OPEN_READWRITE, (err) => {
     if (err) {
         console.error('Error opening database ' + err.message);
     } else {
@@ -62,8 +62,10 @@ app.get('/', (req, res) => res.render('index', {
 */
 
 
+// create application/json parser
+var jsonParser = bodyParser.json()
 
-app.post("/users", body_parser.urlencoded({ extended: false }), cors(corsOptions), (req, res, next) => {
+app.post("/users", jsonParser, cors(corsOptions), (req, res, next) => {
 
     res.json({
         params : req.body
@@ -146,7 +148,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Body Parser Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
+// parse application/json
+app.use(bodyParser.json())
 
 
 
